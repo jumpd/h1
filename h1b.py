@@ -8,13 +8,14 @@ from sklearn.model_selection import train_test_split
 #dataset path
 data_set_path = 'h1b_kaggle.csv'
 
-#split data into training and test set
+#extract the data 
 chunks = 100 #number of data rows want to use
 data_set = h1bfunctions.get_data(data_set_path, chunk = chunks)
 
 #clean the data
 new_data = h1bfunctions.format_clean(data_set)
 
+#split the data
 xs = new_data.drop('CASE_STATUS', axis = 1)  
 ys = new_data['CASE_STATUS']
 X_train, X_test, y_train, y_test = train_test_split(xs,ys, test_size=0.30)
@@ -25,6 +26,9 @@ print(ys.describe())
 
 #Visuallizations
 #h1functions.visualize(xs)
+
+#One Hot Encode categorical variables
+ 
 
 #Transform and Scale Data
 scaler = preprocessing.StandardScaler()

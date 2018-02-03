@@ -9,19 +9,20 @@ def get_data(path_to_data, chunk='all'):
         dwdata = pd.read_csv(path_to_data)
     else:
         dwdata = pd.read_csv(path_to_data, nrows = chunk)
-    return Xset, Yset
+		
+    return dwdata
 
 def format_clean(data):
     '''
     This function does some basic transformation on data
     We want to remove the 'Withdrawn' from the target labeled dataset 
-    and meger 'Certified-Withdrawn' with 'Certified' in 
+    and merge 'Certified-Withdrawn' with 'Certified' in 
     order to make the y_labels/targets binary 
     '''
+    print(set(data["CASE_STATUS"])
+	df1 = data[data['CASE_STATUS']!='WITHDRAWN']
     
-    df1 = data.drop('Withdrawn', axis=0)
-    
-    return cleaned
+    return df1
 
 
 def visualize(data):
